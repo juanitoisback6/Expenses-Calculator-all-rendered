@@ -1,0 +1,194 @@
+body { 
+          background-color: #f7f7f7; 
+          display: flex; 
+          flex-direction: column; 
+          align-items: center; 
+          justify-content: center;
+          min-height: 100vh; 
+          margin: 0; 
+          font-family: sans-serif; 
+}
+.container { 
+          margin: 30px auto; 
+          width: 350px; 
+}
+h1 { 
+          letter-spacing: 1px; 
+          margin: 0; 
+}
+h3 { 
+          border-bottom: 1px solid #bbb; 
+          padding-bottom: 10px; 
+          margin: 40px 0 10px; 
+}
+.balance-container { 
+          text-align: center; 
+          background: white; 
+          padding: 20px; 
+          box-shadow: 0 1px 3px rgba(0,0,0,0.12); 
+          border-radius: 10px; 
+}
+
+input { 
+          border: 1px solid #dedede; 
+          border-radius: 2px; 
+          display: block; 
+          font-size: 16px; 
+          padding: 10px; 
+          width: 100%; 
+          margin: 10px 0; 
+}
+.btn { 
+          cursor: pointer; 
+          background-color: #9c88ff; 
+          box-shadow: 0 1px 3px rgba(0,0,0,0.12); 
+          color: #fff; 
+          border: 0; 
+          display: block; 
+          font-size: 16px; 
+          margin: 10px 0 30px; 
+          padding: 10px; 
+          width: 100%; 
+}
+
+.list { 
+          list-style-type: none; 
+          padding: 0; 
+          margin-bottom: 40px; 
+}
+.list li { 
+          background-color: #fff; 
+          box-shadow: 0 1px 3px rgba(0,0,0,0.12); 
+          color: #333; 
+          display: flex; 
+          justify-content: space-between; 
+          position: relative; 
+          padding: 10px; 
+          margin: 10px 0; 
+}
+
+.deleteBtn{
+          background-color: #c0392b;
+          color: #dedede;
+          height: 5vh;
+          border-radius: 30px;
+}
+
+/* Borde rojo para gastos, verde para ingresos */
+.list li.minus { 
+          border-right: 5px solid #c0392b; }
+.list li.plus { 
+          border-right: 5px solid #2ecc71; }
+
+.delete-btn { 
+          cursor: pointer; 
+          background-color: #e74c3c; 
+          border: 0; color: #fff; 
+          font-size: 20px; 
+          line-height: 20px; 
+          padding: 2px 5px; 
+          opacity: 0; 
+          transition: opacity 0.3s ease; 
+          position: absolute; 
+          left: 0; 
+          transform: translateX(-100%);
+ }
+.list li:hover .delete-btn { 
+          opacity: 1; 
+          transform: translateX(0);
+ }
+
+  .hidden {
+    display: none !important;
+}  
+  
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    z-index: 100;
+}
+
+/* La tarjeta del modal */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+  
+}
+
+#modalH{
+           
+           font-size: small;
+}
+
+
+ 
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 60px;
+}
+
+#modal-body{
+  border-radius: 790px;
+}
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    z-index: 100;
+}
+
+/* La tarjeta del modal */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+  
+}
+
+ 
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 60px;
+}
+
+#modal-body{
+  border-radius: 790px;
+}

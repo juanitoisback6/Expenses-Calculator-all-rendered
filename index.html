@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de Gastos</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>💰 My Wallet</h2>
+        
+        <div class="balance-container">
+            <h4>Balance</h4>
+            <h1 id="balance">$0.00</h1>
+        </div>
+
+        <h3>History</h3>
+        <ul id="list" class="list">
+            </ul>
+
+        <h3>Add new expense</h3>
+        <form id="form">
+            <div class="form-control">
+                <label for="text">Category</label>
+                <input type="text" id="text" placeholder="E.g: Salary, Food..." autocomplete="off">
+            </div>
+            <div class="form-control">
+                <label for="amount">Quantity <br>
+                (Negative = expense , Positive = income)</label>
+                <input type="number" id="amount" placeholder="E.g: -200 o 500">
+            </div>
+            <button class="btn">Add Transaction</button>
+        </form>
+    </div>
+
+    <div id="modal-overlay" class="hidden">
+    <div class="modal-content">
+        <button id="close-modal">X</button>
+        <div id="modal-body"> <h1 id="modalH">Please fill out all the fields</h1>
+            </div>
+    </div>
+</div>
+
+    <script src="script.js"></script> </body>
+</html>
