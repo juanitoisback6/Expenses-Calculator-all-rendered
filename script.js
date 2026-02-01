@@ -129,6 +129,31 @@ modalOver.addEventListener("click", (e) => {
  
 
 
+function printer (array,father) {
+
+array.forEach((item)=>{
+    
+    
+ if(item.amount < 0){
+
+    const liCreate = document.createElement("li");
+    liCreate.classList.add("minus");
+    liCreate.innerHTML= `<h1>${item.text}</h1> ${item.amount}`
+    father.appendChild(liCreate);
+
+}else{
+
+   const liCreate = document.createElement("li");
+    liCreate.classList.add("plus");
+    liCreate.innerHTML= `<h1>${item.text}</h1> ${item.amount}`
+        father.appendChild(liCreate);
+        
+}})
+
+
+};
+
+
 
 
 
