@@ -5,6 +5,16 @@ const modalOver = document.getElementById("modal-overlay");
 const closeModal = document.getElementById("close-modal");
 const balance = document.getElementById("balance");
 const historyList = document.getElementById("list");
+const btndeleteHistory = document.getElementById("btndeleteHistory");
+
+
+
+btndeleteHistory.addEventListener("click", ()=>{
+    localStorage.clear();
+    historyList.innerHTML= '';
+    balance.innerText = currencyFormatter (0);
+
+})
 
 let transactions = [];
 
@@ -18,6 +28,7 @@ function paintItems (name, price) {
  const deleteBtn = document.createElement("button");
  deleteBtn.innerText = "X";
  deleteBtn.classList.add("deleteBtn");
+ 
 
 newLi.innerHTML= `<h1>${name}</h1> <p>${price}</p>`; 
 
@@ -32,12 +43,14 @@ if (localStorage.getItem("expenses")){
           console.log("Sisa´, funciono´");
           
        transactions = JSON.parse(storedData);  
- 
-      transactions.forEach((tran)=>{
+  
 
-                       paintItems (tran.text, tran.amount);
+    //  paintItems (tran.text, tran.amount);
 
-});
+
+     printer (transactions,historyList);
+
+ ;
 
 balance.innerText = currencyFormatter (reduceT());
 
@@ -96,18 +109,41 @@ if(inputText.value.trim() == ""  || inputNumber.value.trim() == ""){
 
 transactions.push(transaction);
 
-localStorage.setItem("expenses", JSON.stringify(transactions));
+
 
 console.log(transactions);
+  
+  if(transaction.amount < 0){
+
+    const liCreate = document.createElement("li");
+    liCreate.classList.add("minus");
+    liCreate.innerHTML= `<h1>${transaction.text}</h1> ${transaction.amount}`
+
+    
+    historyList.appendChild(liCreate);
+
+    const deleteBtn = document.createElement("button");
+ deleteBtn.innerText = "X";
+ deleteBtn.classList.add("deleteBtn");
+ liCreate.appendChild(deleteBtn);
+ balance.innerText = currencyFormatter (reduceT());
+localStorage.setItem("expenses", JSON.stringify(transactions));
+
+}else{
+
+   const liCreate = document.createElement("li");
+    liCreate.classList.add("plus");
+    liCreate.innerHTML= `<h1>${transaction.text}</h1> ${transaction.amount}`
+        historyList.appendChild(liCreate);
+        const deleteBtn = document.createElement("button");
+ deleteBtn.innerText = "X";
+ deleteBtn.classList.add("deleteBtn");
+ liCreate.appendChild(deleteBtn);
+ balance.innerText = currencyFormatter (reduceT());
+localStorage.setItem("expenses", JSON.stringify(transactions));
+}
+
  
-
-reduceT();
-
-console.log(reduceT());
-
-balance.innerText = currencyFormatter (reduceT());
-
-paintItems (transaction.text, transaction.amount);
 
 console.log(transactions);
 }
@@ -139,7 +175,14 @@ array.forEach((item)=>{
     const liCreate = document.createElement("li");
     liCreate.classList.add("minus");
     liCreate.innerHTML= `<h1>${item.text}</h1> ${item.amount}`
+
+    
     father.appendChild(liCreate);
+
+    const deleteBtn = document.createElement("button");
+ deleteBtn.innerText = "X";
+ deleteBtn.classList.add("deleteBtn");
+ liCreate.appendChild(deleteBtn);
 
 }else{
 
@@ -147,12 +190,41 @@ array.forEach((item)=>{
     liCreate.classList.add("plus");
     liCreate.innerHTML= `<h1>${item.text}</h1> ${item.amount}`
         father.appendChild(liCreate);
-        
+        const deleteBtn = document.createElement("button");
+ deleteBtn.innerText = "X";
+ deleteBtn.classList.add("deleteBtn");
+ liCreate.appendChild(deleteBtn);
+
 }})
 
 
 };
 
+ 
+
+historyList.addEventListener("click", (e) => { 
+ console.log(e.target.classList)
+      if (e.target.classList.contains("deleteBtn")) {
+
+        const itemClicked = e.target.parentElement;
+
+        console.log("this",itemClicked);
+
+        const indice = Array.from(historyList.children).indexOf(itemClicked);
+
+        transactions.splice(indice, 1);
+
+        localStorage.setItem("expenses", JSON.stringify(transactions));
+  
+          
+          itemClicked.remove();
+
+           balance.innerText = currencyFormatter (reduceT());
+
+          console.log(itemClicked);
+      }
+ 
+ })
 
 
 
