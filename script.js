@@ -129,6 +129,9 @@ console.log(transactions);
  balance.innerText = currencyFormatter (reduceT());
 localStorage.setItem("expenses", JSON.stringify(transactions));
 
+inputText.value = "";
+    inputNumber.value = "";
+
 }else{
 
    const liCreate = document.createElement("li");
@@ -141,6 +144,9 @@ localStorage.setItem("expenses", JSON.stringify(transactions));
  liCreate.appendChild(deleteBtn);
  balance.innerText = currencyFormatter (reduceT());
 localStorage.setItem("expenses", JSON.stringify(transactions));
+
+inputText.value = "";
+    inputNumber.value = "";
 }
 
  
